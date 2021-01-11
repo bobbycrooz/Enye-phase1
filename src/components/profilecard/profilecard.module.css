@@ -1,0 +1,7 @@
+.main {
+  padding: 5px;
+  margin: 5px;
+  background-color: rgb(212, 209, 205);
+  border-bottom: 1px solid blue;
+  min-height: 150px;
+}

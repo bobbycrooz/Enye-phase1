@@ -1,16 +1,19 @@
-import './App.css';
-import logo from "./asset/illustration/love.svg"
+import {useEffect} from 'react'
+import './global.css'
+import Sidepane from './components/sidepane'
+import Mainpane from  './components/mainpane'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        
-       
-      </header>
+
+const App = (props) => {
+
+
+
+  return(
+    <div className="main">
+      <Sidepane />
+      <Mainpane />
     </div>
-  );
-}
 
+  )
+}
 export default App;
