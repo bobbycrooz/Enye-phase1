@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Style from 'styled-components'
 import { ProfileCard } from '../components/profilecard'
+import Skelecton, {SkeletonTheme} from 'react-loading-skeleton' 
 
 
 
@@ -26,21 +27,30 @@ padding:15px;
 background-color:red;
 text-align:center;
 `
+
+
 export const Page = (props) => {
-    const [arr, setArr] = useState([1,1,1,1,1,1,]);
+    const [arr, setArr] = useState(false);
      
     return(
         <BodyDiv>
           
            
-          
+{/*           
            {
                    
                    arr?arr.map((item,index)=><ProfileCard/>): <DangerDiv><h1>No data yet</h1></DangerDiv>
 
                    
                
-           }
+           } */}
+
+
+           <SkeletonTheme color='green' highlightColor='red'>
+           <Skelecton  duration={5} count={10} height={200} />
+
+           </SkeletonTheme>
+
                 
             </BodyDiv>
     )
