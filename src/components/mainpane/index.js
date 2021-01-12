@@ -25,7 +25,7 @@ const Mainpane = (props) => {
         <div className={Styles.pane__main}>
             <HeadDiv className={Styles.pane__title}>
                 
-                <div className={Styles.pane__title_logo}>Dashboard</div>
+                <div className={Styles.pane__title_logo}> Patients Dashboard</div>
                 <div className={Styles.pane__title_search}>
                     <div className={Styles.search__container}>
                     <input 
