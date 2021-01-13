@@ -1,6 +1,7 @@
 import React from 'react'
 import Styles from './sidepane.module.css'
-import  logo  from "../../asset/illustration/love.svg";
+import  logo  from "../../asset/illustration/info.svg";
+import logo1 from '../../asset/illustration/enye.png'
 import AOS from 'aos'
 import 'aos/dist/aos.css';
 AOS.init(
@@ -14,11 +15,11 @@ const Sidepane = (props) => {
     return(
         <div className={Styles.pane__side}>
             <span className={Styles.pane__title}>
-                Enye Phase 1
+                <img src={logo1} alt='logo'/>
             </span>
            
-        <div className="side__pane_body">
-            <ul>
+        <div className={Styles.pane__body}>
+            <ul >
                 <a href="">
                     <li>Dashbboard</li>
                 </a>

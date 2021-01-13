@@ -8,6 +8,7 @@
 }
 
 .pane__title_logo {
+  font-weight: bolder;
   margin-left: 30px;
   border-bottom: 2px solid rgb(91, 91, 250);
 }
@@ -29,8 +30,9 @@
   outline: none;
 }
 .pane__search::placeholder {
-  font-family: "Potta One", cursive;
-  font-weight: 100;
+  
+
+  font-style: italic;
   color: rgb(179, 179, 179);
 }
 .pane__button {
