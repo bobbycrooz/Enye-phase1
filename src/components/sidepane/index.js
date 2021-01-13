@@ -19,23 +19,7 @@ const Sidepane = (props) => {
             </span>
            
         <div className={Styles.pane__body}>
-            <ul >
-                <a href="">
-                    <li>Dashbboard</li>
-                </a>
-                <a href="">
-                    <li>filter</li>
-                </a>
-                <a href="">
-                    <li>Gender</li>
-                </a>
-                <a href="">
-                    <li>Payment</li>
-                </a>
-                <a href="">
-                    <li>Location</li>
-                </a>
-            </ul>
+            
         </div>
         <span>
             <img 

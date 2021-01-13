@@ -16,7 +16,7 @@ padding:10px;
 margin:10px 20px;
 box-shadow:0px 5px 5px -9px #2a313c;
 opacity:0.9;
-
+overflow-x: hidden;
 overflow-y: scroll;
 display:flex;
 justify-content:center;
@@ -32,7 +32,7 @@ export const Home = (props) => {
       return (
         <div className="welcome">
           <div className="welcome__image">
-            <img src={logo2} alt="" />
+            <img src={logo2} alt="reading docs" />
           </div>
           <div className="welcome__text">
             welcome to the patient record page
@@ -50,15 +50,17 @@ export const Home = (props) => {
   return (
     <BodyDiv>
       <Row>{fuad(showContent)}</Row>
+      <Pagination pageNumber={1}/>
     </BodyDiv>
   );
 };
 
-// const WelcomePage = () => {
-//   const [showContent, setShowContent] = useState(false);
-
-//
-//   return (
-
-//   );
-// };
+const Pagination = (props) => {
+  return(
+    <div className="pagination">
+      <button className='pages'>
+        {props.pageNumber}
+      </button>
+    </div>
+  )
+}

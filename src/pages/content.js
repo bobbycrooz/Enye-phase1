@@ -31,31 +31,22 @@ justify-content:center;
 `;
 
 export const Content = (props) => {
-  const APIendoint = "https://api.enye.tech/v1/challenge/records";
+  const [pageContent, setPageContent] = useState(false);
 
-  const [profile, setProfile] = useState(false);
-  const [pageContent, setPageContent] = useState(profile);
+  // const APIendoint = "https://api.enye.tech/v1/challenge/records";
+  // const [profile, setProfile] = useState(false);
+  // useEffect(() => {
+  //   getUserData();
+  // }, []);
+ 
 
-  useEffect(() => {
-    getUserData();
-  }, []);
 
-  const getUserData = async () => {
-    const userData = await fetch(APIendoint);
-    const userDataJson = await userData.json();
-    const { records } = userDataJson;
-    setProfile(records.profiles);
-  };
-
+  
   return (
     <>
-      {pageContent ? (
-        pageContent.map((item, index) => (
-          <ProfileCard name={item.FirstName} lname={item.LastName} />
-        ))
-      ) : (
-        <Shima />
-      )}
+    {
+     pageContent?pageContent.map((item)=><ProfileCard/>):<Shima/>
+    }
     </>
   );
 };
