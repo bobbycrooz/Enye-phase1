@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Styles from './mainpane.module.css'
 import Style from 'styled-components'
-import {Page} from '../../pages/home'
+import {Home} from '../../pages/home'
 
 
 const HeadDiv = Style.div`
@@ -13,8 +13,6 @@ const HeadDiv = Style.div`
     padding:10px;
     margin:10px 20px;
     box-shadow:0px 5px 10px -10px #2a313c;
-   
-
 `
 
 
@@ -47,7 +45,7 @@ const Mainpane = (props) => {
                     
                 </div>
             </HeadDiv>
-            <Page text='an array here'/>
+            <Home/>
         </div>
         
     )

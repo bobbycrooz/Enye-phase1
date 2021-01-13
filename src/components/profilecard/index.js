@@ -4,29 +4,35 @@ import Styles from './profilecard.module.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Col, Table} from "react-bootstrap"
 import logo from '../../asset/illustration/random.svg'
-
-
+import AOS from 'aos'
+import 'aos/dist/aos.css';
+AOS.init(
+    {
+        delay:50,
+        duration:500
+    }
+);
 
 
 
 const ProfileDiv = Style.div`
     padding:4px;
-    margin:15px;
+    margin:15px 0;
     background-color:#fff;
     color:black;
     border-radius:5px;
     box-shadow: 0 2px 10px -5px black;
     height:300px;
-    width:250px;
+    width:100%;
     position:relative;
-   
+    
     
 
 `
 
 export const ProfileCard = (props) => {
     return(
-        <Col sm={12} md={6} lg={4}>
+        <Col sm={12} md={6} lg={4} >
         <ProfileDiv>
         
            

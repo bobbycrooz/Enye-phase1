@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import Style from 'styled-components'
-import { ProfileCard } from '../components/profilecard'
-import Skelecton, {SkeletonTheme} from 'react-loading-skeleton' 
-import {Row} from 'react-bootstrap'
-
-
+import React, { useState, useEffect } from "react";
+import Style from "styled-components";
+import { ProfileCard } from "../components/profilecard";
+import Skelecton, { SkeletonTheme } from "react-loading-skeleton";
+import { Row } from "react-bootstrap";
+import { Content } from "./content";
+import logo2 from "../asset/illustration/info.svg";
 
 const BodyDiv = Style.div`
 
@@ -20,44 +20,45 @@ opacity:0.9;
 overflow-y: scroll;
 display:flex;
 justify-content:center;
+`;
 
+export const Home = (props) => {
+  const [showContent, setShowContent] = useState(false);
 
-`
-const DangerDiv = Style.div`
-padding:15px;
-background-color:red;
-text-align:center;
-`
+  const toggler = () => setShowContent(true);
 
+  const fuad = (showContent) => {
+    if (!showContent) {
+      return (
+        <div className="welcome">
+          <div className="welcome__image">
+            <img src={logo2} alt="" />
+          </div>
+          <div className="welcome__text">
+            welcome to the patient record page
+          </div>
+          <button onClick={toggler} className="welcome__button">
+            View Profiles
+          </button>
+        </div>
+      );
+    } else {
+      return <Content />;
+    }
+  };
 
-export const Page = (props) => {
-    const APIendoint = 'https://api.enye.tech/v1/challenge/records';
+  return (
+    <BodyDiv>
+      <Row>{fuad(showContent)}</Row>
+    </BodyDiv>
+  );
+};
 
-    const [arr, setArr] = useState(true);
-    const [profile, setProfile] = useState(false)
+// const WelcomePage = () => {
+//   const [showContent, setShowContent] = useState(false);
 
-    useEffect(()=>{
-        getUserData();
-},[])
+//
+//   return (
 
-            
-
-         const getUserData = async () => {
-             const userData = await fetch(APIendoint)
-             const userDataJson = await userData.json();
-             const {records} = userDataJson
-             setProfile(records.profiles);
-     }
-     
-
-    return(
-        <BodyDiv>
-            <Row>
-            {
-                  profile? profile.map((item,index)=> <ProfileCard name={item.FirstName} lname={item.LastName}/>):<DangerDiv>no data</DangerDiv>
-               }
-            </Row>
-               
-        </BodyDiv>
-    )
-}
+//   );
+// };
