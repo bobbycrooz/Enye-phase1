@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import Style from "styled-components";
+import React, { useState, useEffect, useContext } from "react";
+import Style, { StyleSheetManager } from "styled-components";
 import { ProfileCard } from "../components/profilecard";
 import Skelecton, { SkeletonTheme } from "react-loading-skeleton";
 import { Row, Col } from "react-bootstrap";
@@ -7,6 +7,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
+import profileContext from "../profileContext";
+
 AOS.init({
   delay: 50,
   duration: 2000,
@@ -31,36 +33,57 @@ justify-content:center;
 `;
 
 export const Content = (props) => {
-  const APIendoint = "https://api.enye.tech/v1/challenge/records";
+  const value = useContext(profileContext);
 
-  const [profile, setProfile] = useState(false);
-  const [pageContent, setPageContent] = useState(profile);
+  const [pageContent, setPageContent] = useState(false);
 
   useEffect(() => {
-    getUserData();
-  }, []);
+    setPageContent(value.pages[0]);
+  }, [value]);
 
-  const getUserData = async () => {
-    const userData = await fetch(APIendoint);
-    const userDataJson = await userData.json();
-    const { records } = userDataJson;
-    setProfile(records.profiles);
-  };
+  const gotoPageHandler = (pageNumber) =>
+    setPageContent(value.pages[pageNumber]);
 
   return (
     <>
-      { (
-        profile.map((item, index) => (
+      {pageContent ? (
+        pageContent.map((item) => (
           <ProfileCard
-           name={item.FirstName} 
-           lname={item.LastName}
+            name={item.FirstName}
+            lname={item.LastName}
+            gender={item.Gender}
+            uname={item.UserName}
+            phone={item.PhoneNumber}
+            email={item.Email}
           />
-        )
-      }
+        ))
+      ) : (
+        <Shima />
+      )}
+
+      <div className="pagination">
+        {value.pages.map((item, index) => (
+          <Pagination
+            clickHandler={() => gotoPageHandler(index)}
+            pageNum={index}
+          />
+        ))}
+
+        {}
+      </div>
     </>
   );
 };
 
 const Shima = () => {
   return <Skelecton height={200} count={4} width={300} className="m-3" />;
+};
+
+const Pagination = (props) => {
+  // const values = useContext(profileContext);
+  return (
+    <button className="pages" onClick={props.clickHandler}>
+      {props.pageNum + 1}
+    </button>
+  );
 };

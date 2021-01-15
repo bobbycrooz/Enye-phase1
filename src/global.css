@@ -53,3 +53,44 @@ body {
   box-shadow: 0 1px 6px -10px rgb(94, 94, 94);
   outline: none;
 }
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  bottom: 50px;
+  display: block;
+  left: 50%;
+  z-index: 10000;
+  transform: translate(-50%);
+}
+.pages {
+  padding: 3px;
+  width: 30px;
+
+  margin: 0;
+  color: black;
+  background-color: blanchedalmond;
+  border: 1px solid rgb(114, 114, 236);
+  display: flex;
+  justify-content: center;
+}
+
+.filter {
+  width: auto;
+
+  padding: 3px;
+  margin-top: 20px;
+  background-color: rgb(119, 119, 248);
+  color: #fff;
+  border: none;
+  box-shadow: 0 1px 6px -10px rgb(94, 94, 94);
+  outline: none;
+}
+td {
+  text-align: center;
+}
+
+.search_icon {
+  color: blue;
+}

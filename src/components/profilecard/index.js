@@ -4,6 +4,8 @@ import Styles from './profilecard.module.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Col, Table} from "react-bootstrap"
 import logo from '../../asset/illustration/random.svg'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faMars,faVenus,faUser} from '@fortawesome/free-solid-svg-icons'
 import AOS from 'aos'
 import 'aos/dist/aos.css';
 AOS.init(
@@ -20,11 +22,14 @@ const ProfileDiv = Style.div`
     margin:15px 0;
     background-color:#fff;
     color:black;
-    border-radius:5px;
+    border-radius:10px;
     box-shadow: 0 2px 10px -5px black;
     height:300px;
     width:100%;
     position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
     
     
 
@@ -39,10 +44,10 @@ export const ProfileCard = (props) => {
            <div className={Styles.Caption}>
                     {props.name} {props.lname}
                </div>
-               <div className={Styles.ProImage}>
-               <img src={logo} alt="something"/>
+               
+               <FontAwesomeIcon className={Styles.ProIcon} size='3x' icon={props.gender === "Male"? faMars:props.gender === "Female"?faVenus:faUser} />
               
-           </div>
+         
        
 
        <div className={Styles.body}>
@@ -58,19 +63,19 @@ export const ProfileCard = (props) => {
            <tbody>
                <tr>
                    <th>Gender</th>
-                   <td>Male</td>
+                   <td>{props.gender}</td>
                </tr>
                <tr>
                    <th>Username</th>
-                   <td>Bobby</td>
+                   <td>{props.uname}</td>
                </tr>
                <tr>
                    <th>Phone</th>
-                   <td>09077726791</td>
+                   <td>{props.phone}</td>
                </tr>
                <tr>
                    <th>Email</th>
-                   <td>idrisloove@gmail.com</td>
+                   <td>{props.email}</td>
                </tr>
 
            </tbody>

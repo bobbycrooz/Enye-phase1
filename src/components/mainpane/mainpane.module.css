@@ -12,6 +12,11 @@
   margin-left: 30px;
   border-bottom: 2px solid rgb(91, 91, 250);
 }
+@media only screen and (max-width: 500px) {
+  .pane__title_logo {
+    display: none;
+  }
+}
 .pane__title_search {
   margin-right: 30px;
   width: 350px;
@@ -25,19 +30,17 @@
 .pane__search {
   width: 90%;
   border-radius: 8px 0 0 8px;
-  border: 1px solid rgb(81, 81, 247);
   padding: 4px;
   outline: none;
+  border: 1px solid rgb(172, 172, 173);
 }
 .pane__search::placeholder {
-  
-
   font-style: italic;
   color: rgb(179, 179, 179);
 }
 .pane__button {
   width: 10%;
-  border: 1px solid rgb(81, 81, 247);
+  border: 1px solid rgb(172, 172, 173);
   border-radius: 0 8px 8px 0;
   padding: 4px;
   background-color: lightblue;
