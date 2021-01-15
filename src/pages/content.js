@@ -49,13 +49,14 @@ export const Content = (props) => {
 
   return (
     <>
-      {pageContent ? (
-        pageContent.map((item, index) => (
-          <ProfileCard name={item.FirstName} lname={item.LastName} />
-        ))
-      ) : (
-        <Shima />
-      )}
+      { (
+        profile.map((item, index) => (
+          <ProfileCard
+           name={item.FirstName} 
+           lname={item.LastName}
+          />
+        )
+      }
     </>
   );
 };
