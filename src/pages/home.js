@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Style from "styled-components";
 import { ProfileCard } from "../components/profilecard";
 import Skelecton, { SkeletonTheme } from "react-loading-skeleton";
 import { Row } from "react-bootstrap";
 import { Content } from "./content";
 import logo2 from "../asset/illustration/info.svg";
+import profileContext from "../profileContext";
 
 const BodyDiv = Style.div`
 
@@ -23,44 +24,42 @@ justify-content:center;
 `;
 
 export const Home = (props) => {
-  const [showContent, setShowContent] = useState(false);
+  
+  const value = useContext(profileContext)
 
-  const toggler = () => setShowContent(true);
+ 
 
-  const fuad = (showContent) => {
-    if (!showContent) {
-      return (
-        <div className="welcome">
-          <div className="welcome__image">
-            <img src={logo2} alt="reading docs" />
-          </div>
-          <div className="welcome__text">
-            welcome to the patient record page
-          </div>
-          <button onClick={toggler} className="welcome__button">
-            View Profiles
-          </button>
-        </div>
-      );
-    } else {
-      return <Content />;
-    }
-  };
+
 
   return (
     <BodyDiv>
-      <Row>{fuad(showContent)}</Row>
-      <Pagination pageNumber={1}/>
+      <Row>
+        {
+          value.showContent?<Content/>:<Welcome/>
+        }
+      </Row>
+
     </BodyDiv>
   );
 };
 
-const Pagination = (props) => {
+
+const Welcome = ()=>{
+
+  const value = useContext(profileContext)
   return(
-    <div className="pagination">
-      <button className='pages'>
-        {props.pageNumber}
-      </button>
+    <div className="welcome">
+    <div className="welcome__image">
+      <img src={logo2} alt="reading docs" />
     </div>
+    <div className="welcome__text">
+      welcome to the patient record page
+    </div>
+    <button onClick={value.toggler} className="welcome__button">
+      View Profiles
+    </button>
+  </div>
+
   )
 }
+

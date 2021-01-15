@@ -72,3 +72,18 @@ body {
   display: flex;
   justify-content: center;
 }
+
+.filter {
+  width: auto;
+
+  padding: 3px;
+  margin-top: 20px;
+  background-color: rgb(119, 119, 248);
+  color: #fff;
+  border: none;
+  box-shadow: 0 1px 6px -10px rgb(94, 94, 94);
+  outline: none;
+}
+td {
+  text-align: center;
+}

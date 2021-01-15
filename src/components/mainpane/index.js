@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState,useContext } from 'react'
 import Styles from './mainpane.module.css'
 import Style from 'styled-components'
 import {Home} from '../../pages/home'
+import profileContext from '../../profileContext'
 
 
 const HeadDiv = Style.div`
@@ -17,7 +18,9 @@ const HeadDiv = Style.div`
 
 
 const Mainpane = (props) => {
-    const [input, setInput] = useState('')
+const value = useContext(profileContext)
+const [input, setInput] = useState()
+    
 
     return(
         <div className={Styles.pane__main}>
@@ -29,6 +32,7 @@ const Mainpane = (props) => {
                     <input 
                     className={Styles.pane__search}
                     type="text" 
+                    id="search-item"
                     onChange={(e)=> {
                         return 
                         e.preventDefault();
@@ -38,6 +42,7 @@ const Mainpane = (props) => {
                     <button
                      type="submit"
                      className={Styles.pane__button}
+                    onClick={props.searchHandler}
                      >
                         O
                     </button>
@@ -45,7 +50,7 @@ const Mainpane = (props) => {
                     
                 </div>
             </HeadDiv>
-            <Home/>
+            <Home profile={props.profile}/>
         </div>
         
     )

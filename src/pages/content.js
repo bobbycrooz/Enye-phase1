@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
-import Style from "styled-components";
+
+import React, { useState, useEffect, useContext } from "react";
+import Style, { StyleSheetManager } from "styled-components";
 import { ProfileCard } from "../components/profilecard";
 import Skelecton, { SkeletonTheme } from "react-loading-skeleton";
 import { Row, Col } from "react-bootstrap";
@@ -7,6 +8,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import AOS from "aos";
 import "aos/dist/aos.css";
+import profileContext from "../profileContext";
+
 AOS.init({
   delay: 50,
   duration: 2000,
@@ -31,22 +34,40 @@ justify-content:center;
 `;
 
 export const Content = (props) => {
-  const [pageContent, setPageContent] = useState(false);
+  const value = useContext(profileContext)
 
-  // const APIendoint = "https://api.enye.tech/v1/challenge/records";
-  // const [profile, setProfile] = useState(false);
-  // useEffect(() => {
-  //   getUserData();
-  // }, []);
- 
+ const [pageContent, setPageContent] = useState(false)
 
+  useEffect(()=>{
+    
+    setPageContent(value.pages[0])
+  },[value])
 
+  
+const gotoPageHandler = (pageNumber) => setPageContent(value.pages[pageNumber])
   
   return (
     <>
     {
-     pageContent?pageContent.map((item)=><ProfileCard/>):<Shima/>
+     pageContent?pageContent.map((item)=><ProfileCard name={item.FirstName} 
+     lname={item.LastName}
+     gender={item.Gender}
+     uname={item.UserName}
+     phone={item.PhoneNumber}
+     email={item.Email}
+     />):<Shima/>
+
     }
+
+<div className="pagination">
+    {
+      value.pages.map((item,index)=><Pagination clickHandler={()=>gotoPageHandler(index)} pageNum={index}/>)
+    }
+
+    {
+      console.log(value.pages)
+    }
+    </div>
     </>
   );
 };
@@ -54,3 +75,17 @@ export const Content = (props) => {
 const Shima = () => {
   return <Skelecton height={200} count={4} width={300} className="m-3" />;
 };
+
+const Pagination = (props) => {
+  const value = useContext(profileContext)
+  return(
+    
+      <button
+      className='pages'
+     onClick={props.clickHandler}
+      >
+       {props.pageNum + 1}
+      </button>
+    
+  )
+}
