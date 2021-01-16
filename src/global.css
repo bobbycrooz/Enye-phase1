@@ -56,10 +56,10 @@ body {
 
 .pagination {
   display: flex;
-  flex-direction: row;
+  flex-direction: row !important;
   position: fixed;
   bottom: 50px;
-  display: block;
+  visibility: visible;
   left: 50%;
   z-index: 10000;
   transform: translate(-50%);
